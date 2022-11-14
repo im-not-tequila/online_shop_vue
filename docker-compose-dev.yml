@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+
+  web:
+    container_name: online_shop_vue_app
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    volumes:
+      - '.:/online_shop_vue'
+      - '/online_shop_vue/node_modules'
+    ports:
+      - '8081:8080'

@@ -1,19 +1,15 @@
 # online_shop_vue
 
-## Project setup
+В файле src/main.js в переменной axios.defaults.baseURL необходимо указать URL-адрес, на котором работает back-end
+
+## Локальный запуск контейнера (http://localhost:8081)
 ```
-npm install
+docker-compose -f docker-compose-dev.yml up -d --build
 ```
 
-### Compiles and hot-reloads for development
+### Production - запуск контейнера (http://внешний_ип_сервера:8081)
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+docker-compose -f docker-compose-prod.yml up -d --build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Back-end для данного приложения находится [тут](https://github.com/im-not-tequila/online_shop_django).

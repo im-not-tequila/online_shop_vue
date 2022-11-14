@@ -1,0 +1,15 @@
+FROM node:12.2.0-alpine as build
+
+WORKDIR /online_shop_vue
+ENV PATH /online_shop_vue/node_modules/.bin:$PATH
+
+COPY package.json /online_shop_vue/package.json
+RUN npm install
+RUN npm install @vue/cli@3.7.0 -g
+COPY . /online_shop_vue
+RUN npm run build
+
+FROM nginx:1.16.0-alpine
+COPY --from=build /online_shop_vue/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
